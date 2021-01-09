@@ -4,13 +4,9 @@
 	
 		makes NumLock always on and CapsLock always off
 		
-		Makes the taskbar transparent just for fun
-		
-		Holding the right mouse button activates the middle button
-		
 		RAlt+t makes the current window always on top and transparent
 		
-		RAlt+h changes the audio output
+		RAlt+l changes the audio output
 		
 		Maps RAlt & Left/Right to LAlt & Left/Right (for convenience in browsers)
 		
@@ -19,12 +15,16 @@
 		Maps AppsKey & Up/Down to Pgup/Pgdn (again, for convenience on some keyboards)
 		
 		Maps LAlt & X to LAlt & F4 (closing a program)
-		
-		Runs NoSleep on RAlt & N
+
+		Shift + Wheel for horizontal scrolling
 		
 		Runs KeyboardMouse on RAlt & M
 
-		Changes windows color mode on RAlt & C
+		Changes windows color mode and background on RAlt & C (from switching to dark mode during the night)
+
+		RAlt+k kill all AHK scripts
+
+		Some useful macros for special symbols
 */
 
 ; skips the dialog box and replaces the old instance automatically
@@ -35,17 +35,27 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
-
 #include VA.ahk
-
-; kill zoom
-+#^F22::mouseclick, middle
-
-WinSet, Transparent, 150, ahk_class Shell_TrayWnd
 
 ; Default state of lock keys
 SetNumlockState, AlwaysOn
 SetCapsLockState, AlwaysOff
+
+; a set of text conversions, delay is for dealing with issues with some programs (https://github.com/yzhang-gh/vscode-markdown/issues/200)
+:*:;->::{Sleep 100}→
+:*:;<->::{Sleep 100}↔ 
+:*:;=>::{Sleep 100}⇒
+:*:;<=>::{Sleep 100}⇔
+:*:+-::{Sleep 100}±
+:*::cross::{Sleep 100}❌
+:*:;cross::{Sleep 100}❌
+:*::check::{Sleep 100}✔
+:*:;check::{Sleep 100}✔
+:*:;deg::{Sleep 100}°
+:*::deg::{Sleep 100}°
+:*:;otl::--one-top-level
+:*:===::===================={Enter}
+:*:___::____________________
 
 
 ; Alt+t makes the window transparent and always on top
@@ -156,29 +166,10 @@ return
     Run, "C:\Shortcuts\Terminal"
 return
 
-; start vpn
-RAlt & p::
-	RUN, "C:\Program Files (x86)\ExpressVPN\expressvpn-ui\ExpressVPN.exe"
-return
-
 ^#b::
 	Run, bthprops.cpl
 return
      
-
-; a set of text conversions
-; ::->::→
-; :*:<->::↔ 
-; ::=>::⇒
-; :*:<=>::⇔
-:*:+-::±
-:*::cross::❌
-:*:\cross::❌
-:*::check::✔
-:*:\check::✔
-:*:\otl::--one-top-level
-:*:===::===================={Enter}
-:*:___::____________________
 
 ::startpython::
 Send,
