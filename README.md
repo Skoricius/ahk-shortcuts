@@ -2,6 +2,8 @@
 
 All the most important shortcuts that use on most of my computers are in Basic.ahk.
 
+For the wallpaper change, need to edit the wallpaper variables at the beginning of the script.
+
 These include: 
 	
 * makes NumLock always on and CapsLock always off

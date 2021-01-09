@@ -26,6 +26,8 @@
 
 		Some useful macros for special symbols
 */
+dark_wallpaper := "C:\Users\lukas\Pictures\Backgrounds\medvednica_forest.jpg"
+light_wallpaper := "C:\Users\lukas\Pictures\Backgrounds\Windows_wallpaper.jpg"
 
 ; skips the dialog box and replaces the old instance automatically
 #SingleInstance force
@@ -208,13 +210,13 @@ RAlt & c::
 		; write both system end App lightmode to the registry
 		RegWrite,Reg_Dword,HKCU,SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize,SystemUsesLightTheme,0
 		RegWrite,Reg_Dword,HKCU,SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize,AppsUseLightTheme   ,0
-		SetWallpaper("C:\Users\lukas\Pictures\Backgrounds\medvednica_forest.jpg")
+		SetWallpaper(dark_wallpaper)
 		}
 	else {                                            ; if the mode was dark
 		; write both system end App lightmode to the registry
 		RegWrite,Reg_Dword,HKCU,SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize,SystemUsesLightTheme,1
 		RegWrite,Reg_Dword,HKCU,SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize,AppsUseLightTheme   ,1
-		SetWallpaper("C:\Users\lukas\Pictures\Backgrounds\Windows_wallpaper.jpg")
+		SetWallpaper(light_wallpaper)
 		}
 	; tell the system it needs to refresh the user settings
 	run,RUNDLL32.EXE USER32.DLL`, UpdatePerUserSystemParameters `,2 `,True
