@@ -1,6 +1,6 @@
 # My personal AHK shortcuts
 
-All the most important shortcuts that use on most of my computers are in Basic.ahk.
+All the most important shortcuts that I use on most of my computers are in Basic.ahk. Situational shortcuts are in the other folders.
 
 For the wallpaper change, need to edit the wallpaper variables at the beginning of the script.
 
