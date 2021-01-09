@@ -1,0 +1,3 @@
+[submodule "win-10-virtual-desktop-enhancer"]
+	path = win-10-virtual-desktop-enhancer
+	url = git@github.com:sdias/win-10-virtual-desktop-enhancer.git
