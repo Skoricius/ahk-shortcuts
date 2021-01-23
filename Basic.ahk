@@ -26,12 +26,14 @@
 
 		Some useful macros for special symbols
 */
-dark_wallpaper := "C:\Users\lukas\Pictures\Backgrounds\medvednica_forest.jpg"
+; dark_wallpaper := "C:\Users\lukas\Pictures\Backgrounds\medvednica_forest.jpg"
+dark_wallpaper := "C:\Users\lukas\Pictures\Backgrounds\Earth_from_space.jpg"
 light_wallpaper := "C:\Users\lukas\Pictures\Backgrounds\Windows_wallpaper.jpg"
 
 ; skips the dialog box and replaces the old instance automatically
 #SingleInstance force
 #Persistent
+; WinSet, Transparent, 255, ahk_class Shell_TrayWnd
 
 #NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
 ; #Warn  ; Enable warnings to assist with detecting common errors.
