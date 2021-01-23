@@ -4,7 +4,7 @@ All the most important shortcuts that I use on most of my computers are in Basic
 
 For the wallpaper change, need to edit the wallpaper variables at the beginning of the script.
 
-These include: 
+Shortcuts include: 
 	
 * makes NumLock always on and CapsLock always off
 * RAlt+t makes the current window always on top and transparent
