@@ -27,8 +27,8 @@
 		Some useful macros for special symbols
 */
 ; dark_wallpaper := "C:\Users\lukas\Pictures\Backgrounds\medvednica_forest.jpg"
-dark_wallpaper := "C:\Users\lukas\Pictures\Backgrounds\Earth_from_space.jpg"
-light_wallpaper := "C:\Users\lukas\Pictures\Backgrounds\Windows_wallpaper.jpg"
+dark_wallpaper := "C:\Users\LukaSkoric\OneDrive - Riverlane\Pictures\Backgrounds\_d3s5593.jpg"
+light_wallpaper := "C:\Users\LukaSkoric\OneDrive - Riverlane\Pictures\Backgrounds\Windows_wallpaper.jpg"
 
 ; skips the dialog box and replaces the old instance automatically
 #SingleInstance force
@@ -47,7 +47,7 @@ SetCapsLockState, AlwaysOff
 
 ; a set of text conversions, delay is for dealing with issues with some programs (https://github.com/yzhang-gh/vscode-markdown/issues/200)
 :*:;->::{Sleep 100}→
-:*:;<->::{Sleep 100}↔ 
+:*:;<->::{Sleep 100}↔
 :*:;=>::{Sleep 100}⇒
 :*:;<=>::{Sleep 100}⇔
 :*:+-::{Sleep 100}±
@@ -90,22 +90,26 @@ RAlt & Right::
 	send {LAlt down}{Right}{LAlt up}
 return
 
-AppsKey & Up::
-	send {PgUp}
+RAlt & n::
+	Run shell:AppsFolder\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe!App
 return
 
+; AppsKey & Up::
+; 	send {PgUp}
+; return
 
-AppsKey & Down::
-	send {PgDn}
-return
 
-AppsKey & Left::
-	send {Home}
-return
+; AppsKey & Down::
+; 	send {PgDn}
+; return
 
-AppsKey & Right::
-	send {End}
-return
+; AppsKey & Left::
+; 	send {Home}
+; return
+
+; AppsKey & Right::
+; 	send {End}
+; return
 
 LAlt & x::
 	; run, taskkill /f /im zoom.exe
@@ -113,7 +117,7 @@ LAlt & x::
 return
 
 ; remap caps lock to ctrl and shit+caps to CapsLock
-CapsLock::LCtrl
+CapsLock::Esc
 Shift & CapsLock::CapsLock
 
 ; Shift + Wheel for horizontal scrolling
@@ -170,21 +174,14 @@ return
     Run, "C:\Shortcuts\Terminal"
 return
 
+RAlt & b::
+	Run, "C:\Shortcuts\Bitwarden - Shortcut"
+return
+
 ^#b::
 	Run, bthprops.cpl
 return
      
-
-::startpython::
-Send,
-(
-import os
-import sys
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns; sns.set()
-)
 
 ; kill all A/*HK scripts
 RAlt & k::
