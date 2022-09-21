@@ -61,6 +61,11 @@ SetCapsLockState, AlwaysOff
 :*:===::===================={Enter}
 :*:___::____________________
 
+; Maximize window
+#f::
+	WinMaximize, A
+return
+
 
 ; Alt+t makes the window transparent and always on top
 RAlt & t::
@@ -94,22 +99,22 @@ RAlt & n::
 	Run shell:AppsFolder\Microsoft.MicrosoftStickyNotes_8wekyb3d8bbwe!App
 return
 
-; AppsKey & Up::
-; 	send {PgUp}
-; return
+AppsKey & Up::
+	send {PgUp}
+return
 
 
-; AppsKey & Down::
-; 	send {PgDn}
-; return
+AppsKey & Down::
+	send {PgDn}
+return
 
-; AppsKey & Left::
-; 	send {Home}
-; return
+AppsKey & Left::
+	send {Home}
+return
 
-; AppsKey & Right::
-; 	send {End}
-; return
+AppsKey & Right::
+	send {End}
+return
 
 LAlt & x::
 	; run, taskkill /f /im zoom.exe
@@ -124,50 +129,6 @@ Shift & CapsLock::CapsLock
 +WheelDown::WheelRight
 +WheelUp::WheelLeft
 
-; Changes the audio output
-RAlt & l::
-{
-
-	i:=0
-	device%i%:=VA_GetDevice("playback")
-	device_name%i%:=VA_GetDeviceName(device%i%)
-
-	Loop {
-		i+=1
-		str := % "playback:" . i
-		device%i%:=VA_GetDevice(str)
-		if device%i% in 0
-			break
-		device_name%i%:=VA_GetDeviceName(device%i%)
-	}
-	numOfOutputs:=i-1
-	j:=1
-	while j<100
-	{
-		if device_name%j% in %device_name0% 
-		{
-			break
-		} 
-		else
-		{
-			j+=1
-		}
-	}
-	next:=j+1
-	if (next > numOfOutputs )
-	{
-		next:=1
-	} 
-	
-	VA_SetDefaultEndpoint(device%next%, 0)
-	VA_SetDefaultEndpoint(device%next%, 1)
-	VA_SetDefaultEndpoint(device%next%, 2)
-
-	Menu Tray, NoIcon  ; kills previously existing traytips
-	Menu Tray, Icon
-	TrayTip, Playback device: ,% device_name%next%, 1,16
-return
-}
 
 ; Opens the terminal app
 ^!t::
@@ -226,11 +187,61 @@ SetWallpaper(WallpaperFile) {
 	DllCall("SystemParametersInfo", "Uint", 20, "Uint", 0, "Str", WallpaperFile, "Uint", 2)
 }
 
+; Hibernate
+#h::
+	DllCall("PowrProf\SetSuspendState", "Int", 1, "Int", 0, "Int", 0)
+return
 
 ; ; runs the KeyboardMouse script
 ; RAlt & m::
 ; 	Run, %A_ScriptDir%\KeyboardMouse.exe
 ; 	ExitApp
 ; return
+
+
+; ; Changes the audio output
+; RAlt & l::
+; {
+
+; 	i:=0
+; 	device%i%:=VA_GetDevice("playback")
+; 	device_name%i%:=VA_GetDeviceName(device%i%)
+
+; 	Loop {
+; 		i+=1
+; 		str := % "playback:" . i
+; 		device%i%:=VA_GetDevice(str)
+; 		if device%i% in 0
+; 			break
+; 		device_name%i%:=VA_GetDeviceName(device%i%)
+; 	}
+; 	numOfOutputs:=i-1
+; 	j:=1
+; 	while j<100
+; 	{
+; 		if device_name%j% in %device_name0% 
+; 		{
+; 			break
+; 		} 
+; 		else
+; 		{
+; 			j+=1
+; 		}
+; 	}
+; 	next:=j+1
+; 	if (next > numOfOutputs )
+; 	{
+; 		next:=1
+; 	} 
+	
+; 	VA_SetDefaultEndpoint(device%next%, 0)
+; 	VA_SetDefaultEndpoint(device%next%, 1)
+; 	VA_SetDefaultEndpoint(device%next%, 2)
+
+; 	Menu Tray, NoIcon  ; kills previously existing traytips
+; 	Menu Tray, Icon
+; 	TrayTip, Playback device: ,% device_name%next%, 1,16
+; return
+; }
 
 
