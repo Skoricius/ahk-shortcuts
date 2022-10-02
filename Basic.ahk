@@ -142,7 +142,11 @@ return
 ^#b::
 	Run, bthprops.cpl
 return
-     
+
+; Hibernate
+#h::
+	DllCall("PowrProf\SetSuspendState", "Int", 1, "Int", 0, "Int", 0)
+return
 
 ; kill all A/*HK scripts
 RAlt & k::
@@ -180,17 +184,13 @@ RAlt & c::
 		}
 	; tell the system it needs to refresh the user settings
 	run,RUNDLL32.EXE USER32.DLL`, UpdatePerUserSystemParameters `,2 `,True
-} 
+}
 
 ; Sets the wallpaper to a selected file of your choosing.
 SetWallpaper(WallpaperFile) {
 	DllCall("SystemParametersInfo", "Uint", 20, "Uint", 0, "Str", WallpaperFile, "Uint", 2)
 }
 
-; Hibernate
-#h::
-	DllCall("PowrProf\SetSuspendState", "Int", 1, "Int", 0, "Int", 0)
-return
 
 ; ; runs the KeyboardMouse script
 ; RAlt & m::
